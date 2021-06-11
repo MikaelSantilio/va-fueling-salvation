@@ -14,9 +14,11 @@ func _physics_process(delta):
 	if Input.is_action_just_released("ui_primary_shot"):
 		$MiddleShotAudio.stop()
 		$EndShotAudio.play()
+		$weapon/fire.visible = false
 	
 	elif Input.is_action_pressed("ui_primary_shot") and _duration_pressed > 0.25:
 		$StartShotAudio.stop()
+		$weapon/fire.visible = true
 		if not $MiddleShotAudio.is_playing():
 			$MiddleShotAudio.play()
 		print("Segurando")
