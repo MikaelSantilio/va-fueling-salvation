@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/03-end.mp3-42ca2a5fcab98fb9317bb30556cca664.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/mini_gun/03-end.mp3"
+dest_files=[ "res://.import/03-end.mp3-42ca2a5fcab98fb9317bb30556cca664.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
