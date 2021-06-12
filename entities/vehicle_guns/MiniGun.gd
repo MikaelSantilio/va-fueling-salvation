@@ -1,9 +1,18 @@
 extends Node2D
 
 var _duration_pressed = 0
+var _start_shot_finished = false
+var rng = RandomNumberGenerator.new()
+
+func _ready():
+	 #= 0.1
+	rng.randomize()
 
 func _physics_process(delta):
-
+	print($HeavyShot2D.pitch_scale)
+	# $HeavyShot2D.pitch_scale = 1 - $HeavyShot2D.pitch_scale + rng.randf_range(-($HeavyShot2D.pitch_scale/2), $HeavyShot2D.pitch_scale)
+	$HeavyShot2D.pitch_scale = rng.randf_range(0.85, 1)
+	$MiddleShotAudio.pitch_scale = rng.randf_range(0.75, 1)
 	var m = get_global_mouse_position()
 	var aim_speed = deg2rad(1)
 	if $weapon.get_angle_to(m) > 0:
@@ -15,14 +24,20 @@ func _physics_process(delta):
 		$MiddleShotAudio.stop()
 		$EndShotAudio.play()
 		$weapon/fire.visible = false
+		_start_shot_finished = false
 	
-	elif Input.is_action_pressed("ui_primary_shot") and _duration_pressed > 0.25:
+	elif Input.is_action_pressed("ui_primary_shot") and _start_shot_finished:
 		$StartShotAudio.stop()
 		$weapon/fire.visible = true
 		if not $MiddleShotAudio.is_playing():
 			$MiddleShotAudio.play()
-		print("Segurando")
-		
-	elif Input.is_action_pressed("ui_primary_shot"):
+
+	elif Input.is_action_just_pressed("ui_primary_shot"):
 		_duration_pressed += delta
-		$StartShotAudio.play()
+		if not $StartShotAudio.is_playing(): 
+			$StartShotAudio.play()
+
+
+func _on_StartShotAudio_finished():
+	_start_shot_finished = true
+

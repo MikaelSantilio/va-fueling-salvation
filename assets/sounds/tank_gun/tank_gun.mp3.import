@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/tank_gun.mp3-cd9fe10a94573bde333dc5c4c1f9fc28.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/tank_gun/tank_gun.mp3"
+dest_files=[ "res://.import/tank_gun.mp3-cd9fe10a94573bde333dc5c4c1f9fc28.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

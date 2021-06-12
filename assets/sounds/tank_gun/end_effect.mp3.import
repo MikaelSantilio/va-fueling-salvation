@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/end_effect.mp3-6ef72621fd01265b6a4e7acf19b9ecb6.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/tank_gun/end_effect.mp3"
+dest_files=[ "res://.import/end_effect.mp3-6ef72621fd01265b6a4e7acf19b9ecb6.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
