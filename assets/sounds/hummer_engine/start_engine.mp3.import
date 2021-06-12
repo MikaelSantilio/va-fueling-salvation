@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/start_engine.mp3-a4b58655262c72795c7d5cc0e5c32135.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/hummer_engine/start_engine.mp3"
+dest_files=[ "res://.import/start_engine.mp3-a4b58655262c72795c7d5cc0e5c32135.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

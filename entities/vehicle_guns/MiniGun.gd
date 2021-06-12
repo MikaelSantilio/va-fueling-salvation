@@ -9,9 +9,6 @@ func _ready():
 	rng.randomize()
 
 func _physics_process(delta):
-	print($HeavyShot2D.pitch_scale)
-	# $HeavyShot2D.pitch_scale = 1 - $HeavyShot2D.pitch_scale + rng.randf_range(-($HeavyShot2D.pitch_scale/2), $HeavyShot2D.pitch_scale)
-	$HeavyShot2D.pitch_scale = rng.randf_range(0.85, 1)
 	$MiddleShotAudio.pitch_scale = rng.randf_range(0.75, 1)
 	var m = get_global_mouse_position()
 	var aim_speed = deg2rad(1)

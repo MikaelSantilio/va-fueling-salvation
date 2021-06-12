@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/textures/vehicles/hummer/wheel.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/vehicles/hummer/body.png" type="Texture" id=2]
 [ext_resource path="res://scripts/game/VehicleController.gd" type="Script" id=3]
 [ext_resource path="res://entities/vehicle_guns/MiniGun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sounds/hummer_engine/working_engine_2.mp3" type="AudioStream" id=5]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 4.0
@@ -99,6 +100,10 @@ polygon = PoolVector2Array( 41.9083, -56.5026, 47, -50.4, 60.5153, -33.0051, 63.
 
 [node name="Weapon" parent="." instance=ExtResource( 4 )]
 position = Vector2( -1.87137, -0.259377 )
+
+[node name="EngineAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
 
 [connection signal="body_entered" from="RolloverDetector" to="." method="_on_RolloverDetector_body_entered"]
 [connection signal="timeout" from="RolloverTimer" to="." method="_on_RolloverTimer_timeout"]
