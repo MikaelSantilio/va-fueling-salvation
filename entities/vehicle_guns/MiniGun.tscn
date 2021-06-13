@@ -9,11 +9,10 @@
 [ext_resource path="res://assets/textures/weapon_fire/fire_sprite/fire_light.png" type="Texture" id=7]
 
 [node name="Weapon" type="Node2D"]
-position = Vector2( -33, 0 )
 script = ExtResource( 5 )
 
 [node name="weapon" type="Sprite" parent="."]
-position = Vector2( 74.1972, -56.7118 )
+position = Vector2( 24.9691, 2.40746 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 1 )
 
@@ -36,11 +35,14 @@ energy = 1.2
 
 [node name="MiddleShotAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
+volume_db = -10.0
 
 [node name="StartShotAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 2 )
+volume_db = -10.0
 
 [node name="EndShotAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+volume_db = -10.0
 
 [connection signal="finished" from="StartShotAudio" to="." method="_on_StartShotAudio_finished"]

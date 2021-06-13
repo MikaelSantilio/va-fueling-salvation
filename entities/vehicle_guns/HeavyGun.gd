@@ -12,10 +12,10 @@ func _physics_process(delta):
 
 	var m = get_global_mouse_position()
 	var aim_speed = deg2rad(1)
-	if $weapon.get_angle_to(m) > 0:
-		$weapon.rotation += aim_speed
+	if get_angle_to(m) > 0:
+		rotation += aim_speed
 	else:
-		$weapon.rotation -= aim_speed
+		rotation -= aim_speed
 
 	if Input.is_action_just_released("ui_primary_shot"):
 		$weapon/fire.visible = false

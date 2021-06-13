@@ -67,38 +67,7 @@ func _physics_process(delta):
 	
 	elif not is_on_lava and Input.is_action_pressed("ui_down"):
 		rotation_degrees += 0.5
-	
-	
-	
-	if Input.is_action_just_released("ui_horn"):
-		$horn22D.stop()
-		if not $horn2D.is_playing():
-			$horn2D.play()
-		else:
-			$horn2D.stop()
-		print("just released")
-		_duration_pressed = 0
-	
-	elif Input.is_action_pressed("ui_horn") and _duration_pressed > 0.25:
-		$horn2D.stop()
-		if not $horn22D.is_playing():
-			$horn22D.play()
-		print("Segurando")
-	
-	elif Input.is_action_pressed("ui_horn"):
-		_duration_pressed += delta
-	# siren_light_frequence(0.45, _ac_delta)
-	if is_on_lava and hp > 0:
-		if hp < lava_damage:
-			hp = 0
-		else:
-			hp -= lava_damage
-		print(hp)
 
-func calculate_speed_kmh(wheel: RigidBody2D) -> int:
-		var rpm = abs(wheel.angular_velocity) / (2 * PI / 60)
-		var wheel_size = wheel.get_node("Sprite").texture.get_size().y
-		return int(0.1885 * rpm * 0.0127 * wheel_size)
 
 func _on_LavaDetector_area_entered(area):
 	is_on_lava = true
