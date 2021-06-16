@@ -3,9 +3,11 @@ extends Node2D
 var _duration_pressed = 0
 var _start_shot_finished = false
 var rng = RandomNumberGenerator.new()
+var Bullet = preload("res://entities/vehicle_guns/Bullet1.tscn")
+#signal shoot(bullet, direction, location)
+signal shoot(bullet, shoot_transform)
 
 func _ready():
-	 #= 0.1
 	rng.randomize()
 
 func _physics_process(delta):
@@ -25,7 +27,10 @@ func _physics_process(delta):
 	
 	elif Input.is_action_pressed("ui_primary_shot") and _start_shot_finished:
 		$StartShotAudio.stop()
-		$weapon/fire.visible = true
+		$weapon/fire.visible = true 
+		#emit_signal("shoot", Bullet, get_global_rotation(), get_global_position())
+		emit_signal("shoot", Bullet, $BulletSpawn.get_global_transform())
+		#emit_signal("create_bullet", global_position)
 		if not $MiddleShotAudio.is_playing():
 			$MiddleShotAudio.play()
 

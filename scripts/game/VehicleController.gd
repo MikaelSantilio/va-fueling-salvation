@@ -20,6 +20,9 @@ var rng = RandomNumberGenerator.new()
 
 var speed_car : float;
 
+signal shoot_car(bullet, shoot_transform)
+#signal shoot(bullet, direction, location)
+
 func _ready():
 	 #= 0.1
 	rng.randomize()
@@ -101,3 +104,9 @@ func siren_light_frequence(frequence, delta):
 		#print(fmod(delta,frequence))
 		#print(delta)
 		$SirenLight.enabled = false
+
+
+#func _on_Weapon_shoot(bullet, direction, location):
+func _on_Weapon_shoot(bullet, shoot_transform):
+	#emit_signal("shoot", bullet, direction, location)
+	emit_signal("shoot_car", bullet, shoot_transform)

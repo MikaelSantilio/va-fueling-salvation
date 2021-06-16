@@ -45,4 +45,7 @@ volume_db = -10.0
 stream = ExtResource( 3 )
 volume_db = -10.0
 
+[node name="BulletSpawn" type="Position2D" parent="."]
+position = Vector2( 57.4966, -2.58145 )
+
 [connection signal="finished" from="StartShotAudio" to="." method="_on_StartShotAudio_finished"]

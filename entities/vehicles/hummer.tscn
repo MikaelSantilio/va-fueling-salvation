@@ -78,8 +78,9 @@ bias = 0.5
 softness = 0.03
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 207.378, -147.973 )
+position = Vector2( 64.8253, -82.8702 )
 current = true
+zoom = Vector2( 0.5, 0.5 )
 
 [node name="RolloverDetector" type="Area2D" parent="."]
 visible = false
@@ -108,3 +109,4 @@ autoplay = true
 
 [connection signal="body_entered" from="RolloverDetector" to="." method="_on_RolloverDetector_body_entered"]
 [connection signal="timeout" from="RolloverTimer" to="." method="_on_RolloverTimer_timeout"]
+[connection signal="shoot" from="Weapon" to="." method="_on_Weapon_shoot"]

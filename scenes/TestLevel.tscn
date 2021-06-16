@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://addons/rmsmartshape/shapes/point_array.gd" type="Script" id=1]
 [ext_resource path="res://addons/rmsmartshape/vertex_properties.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/textures/ground/ground1-256x256.png" type="Texture" id=9]
 [ext_resource path="res://assets/textures/edge/edge2.png" type="Texture" id=10]
 [ext_resource path="res://entities/vehicles/hummer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/TestLevel.gd" type="Script" id=12]
 
 [sub_resource type="Resource" id=24]
 script = ExtResource( 2 )
@@ -191,6 +192,7 @@ render_offset = 0.0
 
 [node name="TestLevel" type="Node2D"]
 position = Vector2( 31210.6, 301.465 )
+script = ExtResource( 12 )
 
 [node name="car" parent="." instance=ExtResource( 11 )]
 position = Vector2( -27179.8, -4125.22 )
@@ -219,3 +221,5 @@ polygon = PoolVector2Array( 2046.26, -3255.2, 2104.32, -3251.56, 2160.92, -3243.
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.443137, 0.443137, 0.443137, 1 )
+
+[connection signal="shoot_car" from="car" to="." method="_on_car_shoot_car"]
