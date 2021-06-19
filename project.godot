@@ -173,6 +173,10 @@ _global_script_class_icons={
 config/name="Vehicle Adventures: Fueling Salvation"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://scripts/globals/Global.gd"
+
 [input]
 
 ui_left={
@@ -207,6 +211,14 @@ ui_primary_shot={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":75,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Vehicle"
+2d_physics/layer_2="Vehicle Bullet"
+2d_physics/layer_3="Enemy Bullet"
+2d_physics/layer_4="World"
+2d_physics/layer_5="Enemy"
 
 [physics]
 

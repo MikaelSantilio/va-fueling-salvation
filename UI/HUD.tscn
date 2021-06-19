@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/HUD.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/vehicles/speedometer/01_pointer.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/vehicles/speedometer/01.png" type="Texture" id=3]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="HUD" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HUD"]
+margin_left = 842.323
+margin_top = 437.584
+margin_right = 1367.32
+margin_bottom = 962.584
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlPointer" type="Control" parent="HUD"]
+margin_left = 910.339
+margin_top = 502.439
+margin_right = 933.339
+margin_bottom = 527.439
+rect_rotation = 270.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Pointer" type="TextureRect" parent="HUD/ControlPointer"]
+margin_left = -32.5417
+margin_top = -26.7874
+margin_right = 215.458
+margin_bottom = 204.213
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )

@@ -33,6 +33,7 @@ func _physics_process(delta):
 	_ac_delta += delta * 2.5
 	#speed_car = transform.basis_xform_inv(linear_velocity).x/8
 	speed_car = (transform.basis_xform_inv(linear_velocity).x * 0.014)* 3.6
+	Global.player_speed_kmh = speed_car
 	# Velocidade em KM/h
 	#print((transform.basis_xform_inv(linear_velocity).x * 0.014)* 3.6)
 
@@ -110,3 +111,7 @@ func siren_light_frequence(frequence, delta):
 func _on_Weapon_shoot(bullet, shoot_transform):
 	#emit_signal("shoot", bullet, direction, location)
 	emit_signal("shoot_car", bullet, shoot_transform)
+
+
+func _on_EnemyBulletDetector_area_entered(area):
+	print('TOMOU DANO')

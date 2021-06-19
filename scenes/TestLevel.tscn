@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://addons/rmsmartshape/shapes/point_array.gd" type="Script" id=1]
 [ext_resource path="res://addons/rmsmartshape/vertex_properties.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/textures/edge/edge2.png" type="Texture" id=10]
 [ext_resource path="res://entities/vehicles/hummer.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/TestLevel.gd" type="Script" id=12]
+[ext_resource path="res://entities/enemies/Drone.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Resource" id=24]
 script = ExtResource( 2 )
@@ -193,9 +194,13 @@ render_offset = 0.0
 [node name="TestLevel" type="Node2D"]
 position = Vector2( 31210.6, 301.465 )
 script = ExtResource( 12 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 3426.48, -850.278 ],
+"_edit_vertical_guides_": [ 2312.99 ]
+}
 
 [node name="car" parent="." instance=ExtResource( 11 )]
-position = Vector2( -27179.8, -4125.22 )
+position = Vector2( -27170.8, -4125.22 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( -14375.7, -548.816 )
@@ -222,4 +227,8 @@ polygon = PoolVector2Array( 2046.26, -3255.2, 2104.32, -3251.56, 2160.92, -3243.
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.443137, 0.443137, 0.443137, 1 )
 
+[node name="Drone" parent="." instance=ExtResource( 13 )]
+position = Vector2( -25412.6, -4343.65 )
+
 [connection signal="shoot_car" from="car" to="." method="_on_car_shoot_car"]
+[connection signal="drone_shoot" from="Drone" to="." method="_on_Drone_drone_shoot"]
