@@ -1,26 +1,44 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/HUD.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/vehicles/speedometer/02_pointer.png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/vehicles/speedometer/02.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/RussoOne.tres" type="DynamicFont" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.353516, 1, 0, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.184314, 0.188235, 0.184314, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.964706, 0.933333, 0.0196078, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.184314, 0.188235, 0.184314, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="HUD" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="HUD"]
-margin_left = 693.041
-margin_top = 285.078
-margin_right = 1218.04
-margin_bottom = 810.078
-rect_scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -36,16 +54,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ControlPointer" type="Control" parent="HUD"]
-margin_left = 808.939
-margin_top = 409.056
-margin_right = 831.939
-margin_bottom = 434.056
+[node name="Speedometer" type="Control" parent="HUD"]
+anchor_left = 0.835
+anchor_top = 0.655
+anchor_right = 0.835
+anchor_bottom = 0.692
+margin_top = 38.0
+margin_right = 40.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Pointer" type="TextureRect" parent="HUD/ControlPointer"]
+[node name="SpeedometerBg" type="TextureRect" parent="HUD/Speedometer"]
+margin_left = -91.658
+margin_top = -74.6935
+margin_right = 433.341
+margin_bottom = 450.307
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlPointer" type="Control" parent="HUD/Speedometer"]
+margin_left = 24.24
+margin_top = 49.2845
+margin_right = 47.24
+margin_bottom = 74.2845
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pointer" type="TextureRect" parent="HUD/Speedometer/ControlPointer"]
 margin_left = -57.7133
 margin_top = -31.4953
 margin_right = 190.286
@@ -55,3 +96,63 @@ texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="InfoBars" type="Control" parent="HUD"]
+anchor_left = 0.023
+anchor_top = 0.035
+anchor_right = 0.105
+anchor_bottom = 0.07
+margin_left = 84.9305
+margin_top = 19.3406
+margin_right = 124.931
+margin_bottom = 59.3406
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EngineBar" type="ProgressBar" parent="HUD/InfoBars"]
+margin_left = -62.0443
+margin_top = 7.22745
+margin_right = 173.956
+margin_bottom = 27.2274
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+max_value = 1000.0
+value = 500.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GasBar" type="ProgressBar" parent="HUD/InfoBars"]
+margin_left = -62.0443
+margin_top = 43.2274
+margin_right = 173.956
+margin_bottom = 63.2274
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+max_value = 1000.0
+value = 500.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="HUD/InfoBars"]
+margin_left = 11.9838
+margin_top = 5.59873
+margin_right = 89.9838
+margin_bottom = 30.5987
+custom_fonts/font = ExtResource( 5 )
+text = "ENGINE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="HUD/InfoBars"]
+margin_left = 11.9838
+margin_top = 41.5987
+margin_right = 89.9838
+margin_bottom = 66.5987
+custom_fonts/font = ExtResource( 5 )
+text = "GAS"

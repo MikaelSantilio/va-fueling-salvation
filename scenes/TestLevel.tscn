@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://addons/rmsmartshape/shapes/point_array.gd" type="Script" id=1]
 [ext_resource path="res://addons/rmsmartshape/vertex_properties.gd" type="Script" id=2]
@@ -13,6 +13,12 @@
 [ext_resource path="res://entities/vehicles/hummer.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/TestLevel.gd" type="Script" id=12]
 [ext_resource path="res://entities/enemies/Drone.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/textures/world/sun_light.png" type="Texture" id=14]
+[ext_resource path="res://assets/textures/world/sun.png" type="Texture" id=15]
+[ext_resource path="res://assets/textures/world/background_2.png" type="Texture" id=16]
+[ext_resource path="res://assets/textures/world/moon.png" type="Texture" id=17]
+[ext_resource path="res://assets/textures/world/moon_light.png" type="Texture" id=18]
+[ext_resource path="res://assets/textures/world/stars.png" type="Texture" id=19]
 
 [sub_resource type="Resource" id=24]
 script = ExtResource( 2 )
@@ -199,6 +205,63 @@ __meta__ = {
 "_edit_vertical_guides_": [ 2312.99 ]
 }
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 4658.61, -4341.21 )
+motion_scale = Vector2( 0.001, 0.001 )
+motion_mirroring = Vector2( 1024, 1024 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 525.768, 163.188 )
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+position = Vector2( 4658.61, -4341.21 )
+motion_scale = Vector2( 0.001, 0.001 )
+motion_mirroring = Vector2( 1024, 1024 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 535.858, 35.3711 )
+scale = Vector2( 0.293875, 0.293875 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Light2D" type="Light2D" parent="ParallaxBackground/ParallaxLayer/Sprite"]
+texture = ExtResource( 14 )
+
+[node name="Stars" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 4658.61, -4341.21 )
+motion_scale = Vector2( 0.004, 0.004 )
+motion_mirroring = Vector2( 1200, 1300 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Stars"]
+position = Vector2( 637.596, 228.89 )
+scale = Vector2( 1.32097, 2.35271 )
+texture = ExtResource( 19 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 4658.61, -4341.21 )
+motion_scale = Vector2( 0.004, 0.004 )
+motion_mirroring = Vector2( 1024, 1024 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( 545.661, 45.15 )
+scale = Vector2( 0.191231, 0.191231 )
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Light2D" type="Light2D" parent="ParallaxBackground/ParallaxLayer3/Sprite"]
+texture = ExtResource( 18 )
+
 [node name="car" parent="." instance=ExtResource( 11 )]
 position = Vector2( -27170.8, -4125.22 )
 
@@ -225,7 +288,7 @@ modulate = Color( 1, 1, 1, 0.3 )
 polygon = PoolVector2Array( 2046.26, -3255.2, 2104.32, -3251.56, 2160.92, -3243.93, 2216.11, -3232.44, 2269.94, -3217.23, 2373.71, -3176.2, 2472.6, -3121.9, 2567, -3055.44, 2657.3, -2977.94, 2827.1, -2794.15, 2985.05, -2579.26, 3134.22, -2342.06, 3418.47, -1835.76, 3704.33, -1345.36, 3855.5, -1128.03, 4016.24, -940.969, 4101.15, -861.52, 4189.61, -792.933, 4282, -736.296, 4378.67, -692.686, 4428.75, -676.109, 4480.04, -663.215, 4532.61, -654.128, 4586.49, -648.987, 4641.73, -647.928, 4698.39, -651.088, 4756.5, -658.604, 4816.12, -670.605, 4935.65, -693.412, 5052.8, -705.088, 5167.71, -706.414, 5280.51, -698.159, 5391.37, -681.09, 5500.42, -655.984, 5713.7, -584.694, 5921.49, -490.419, 6124.99, -379.317, 6919.38, 110.578, 7118.9, 213.725, 7321.14, 296.852, 7527.26, 353.845, 7632.13, 370.624, 7738.42, 378.551, 7846.26, 376.871, 7955.79, 364.816, 8067.18, 341.619, 8180.55, 306.501, 10990, -957.286, 8417.1, 2189.97, -13278, 2118.88, -13824.6, -3543.18, -8510.86, -1659.42, -4446.05, -475.619, -2811.14, -161.899, -2186.82, -117, -1934.66, -127.835, -1825.04, -142.241, -1726.96, -162.895, -1546.69, -216.601, -1374.33, -281.807, -1051.73, -443.178, -756.07, -640.019, -484.255, -865.382, 0.267578, -1373.74, 819.607, -2425.75, 1203.99, -2857.85, 1400.73, -3025.99, 1501.59, -3095.04, 1604.62, -3152.92, 1710.21, -3198.75, 1818.76, -3231.66, 1930.65, -3250.77 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.443137, 0.443137, 0.443137, 1 )
+color = Color( 0.870588, 0.423529, 0.996078, 1 )
 
 [node name="Drone" parent="." instance=ExtResource( 13 )]
 position = Vector2( -25412.6, -4343.65 )

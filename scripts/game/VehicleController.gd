@@ -1,15 +1,12 @@
 extends RigidBody2D
 
-export var SPEED = 4
 export var hp = 1000
 export var lava_damage = 300
 
-export var max_speed : int = 300
-export var acceleration : float = 1000.0
-export var max_torque_impulse : int = 30000
-var is_horn_pressed = false
+export var max_speed_kmh : int = 160
+export var acceleration_px : float = 600.0
+export var max_torque_impulse : int = 20000
 var _duration_pressed = 0
-var _ac_delta = 0
 
 var speed : float = 0.0
 var is_on_lava = false
@@ -24,13 +21,11 @@ signal shoot_car(bullet, shoot_transform)
 #signal shoot(bullet, direction, location)
 
 func _ready():
-	 #= 0.1
 	rng.randomize()
 
 
 func _physics_process(delta):
 
-	_ac_delta += delta * 2.5
 	#speed_car = transform.basis_xform_inv(linear_velocity).x/8
 	speed_car = (transform.basis_xform_inv(linear_velocity).x * 0.014)* 3.6
 	Global.player_speed_kmh = speed_car
@@ -47,31 +42,32 @@ func _physics_process(delta):
 	#print((speed_car - lower) / (upper - speed_car))
 	
 	#$EngineAudio.pitch_scale = lower + (upper - lower) * speed_car
-	if Input.is_action_pressed("ui_right"):
-		# $r_wheel.angular_velocity += SPEED
-		# $l_wheel.angular_velocity += SPEED
+	if Input.is_action_pressed("ui_right") and speed_car < max_speed_kmh:
 
-		speed += acceleration
+		speed += acceleration_px
 		speed = clamp(speed, speed, max_torque_impulse)
 		$l_wheel.apply_torque_impulse(speed)
 		$r_wheel.apply_torque_impulse(speed)
 
 
-	elif Input.is_action_pressed("ui_left"):
-		#$r_wheel.angular_velocity -= SPEED
-		#$l_wheel.angular_velocity -= SPEED
-		
-		speed -= acceleration
+	elif Input.is_action_pressed("ui_left") and speed_car < max_speed_kmh:
+		speed -= acceleration_px
 		speed = clamp(speed, -max_torque_impulse, speed)
 		$l_wheel.apply_torque_impulse(speed)
 		$r_wheel.apply_torque_impulse(speed)
 	
-	elif not is_on_lava and Input.is_action_pressed("ui_up"):
+	elif Input.is_action_pressed("ui_up"):
 		rotation_degrees -= 0.5
 	
-	elif not is_on_lava and Input.is_action_pressed("ui_down"):
+	elif Input.is_action_pressed("ui_down"):
 		rotation_degrees += 0.5
-
+		
+	if Input.is_action_just_released("ui_horn"):
+		$HornSound.stop()
+	
+	elif Input.is_action_pressed("ui_horn"):
+		if not $HornSound.is_playing():
+			$HornSound.play()
 
 func _on_LavaDetector_area_entered(area):
 	is_on_lava = true
@@ -96,15 +92,6 @@ func _on_RolloverTimer_timeout():
 func _on_RolloverDetector_body_exited(body):
 	print('Descapotou')
 	is_rollover = false
-
-
-func siren_light_frequence(frequence, delta):
-	if fmod(delta,frequence) <= 0.3:
-		$SirenLight.enabled = true
-	else:
-		#print(fmod(delta,frequence))
-		#print(delta)
-		$SirenLight.enabled = false
 
 
 #func _on_Weapon_shoot(bullet, direction, location):
