@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI/HUD.gd" type="Script" id=1]
-[ext_resource path="res://assets/textures/vehicles/speedometer/01_pointer.png" type="Texture" id=2]
-[ext_resource path="res://assets/textures/vehicles/speedometer/01.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/vehicles/speedometer/02_pointer.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/vehicles/speedometer/02.png" type="Texture" id=3]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -15,31 +15,43 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="HUD"]
-margin_left = 842.323
-margin_top = 437.584
-margin_right = 1367.32
-margin_bottom = 962.584
-rect_scale = Vector2( 0.25, 0.25 )
+margin_left = 693.041
+margin_top = 285.078
+margin_right = 1218.04
+margin_bottom = 810.078
+rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ControlPointer" type="Control" parent="HUD"]
-margin_left = 910.339
-margin_top = 502.439
-margin_right = 933.339
-margin_bottom = 527.439
-rect_rotation = 270.0
+[node name="Label" type="Label" parent="HUD"]
+visible = false
+margin_left = 794.09
+margin_top = 254.907
+margin_right = 834.09
+margin_bottom = 268.907
+text = "120"
 __meta__ = {
-"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ControlPointer" type="Control" parent="HUD"]
+margin_left = 808.939
+margin_top = 409.056
+margin_right = 831.939
+margin_bottom = 434.056
+__meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Pointer" type="TextureRect" parent="HUD/ControlPointer"]
-margin_left = -32.5417
-margin_top = -26.7874
-margin_right = 215.458
-margin_bottom = 204.213
-rect_scale = Vector2( 0.25, 0.25 )
+margin_left = -57.7133
+margin_top = -31.4953
+margin_right = 190.286
+margin_bottom = 199.505
+rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
