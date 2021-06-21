@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=2]
+[gd_scene load_steps=149 format=2]
 
 [ext_resource path="res://addons/rmsmartshape/shapes/point_array.gd" type="Script" id=1]
 [ext_resource path="res://addons/rmsmartshape/vertex_properties.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://entities/FinishDetector.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/MainScene.gd" type="Script" id=21]
 [ext_resource path="res://entities/enemies/Drone.tscn" type="PackedScene" id=22]
+[ext_resource path="res://assets/sounds/musics/forest.mp3" type="AudioStream" id=23]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
@@ -1144,6 +1145,11 @@ position = Vector2( 13107.7, -2160.23 )
 
 [node name="Drone2" parent="." instance=ExtResource( 22 )]
 position = Vector2( 9237.65, -2156.94 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 23 )
+volume_db = -12.0
+autoplay = true
 
 [connection signal="shoot_car" from="car" to="." method="_on_car_shoot_car"]
 [connection signal="drone_shoot" from="Drone" to="." method="_on_Drone_drone_shoot"]

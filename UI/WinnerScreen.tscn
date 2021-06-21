@@ -45,7 +45,7 @@ margin_top = 0.0
 margin_right = 228.0
 margin_bottom = 29.0
 text = "Continue"
-reference_path = "res://scenes/map/Map.tscn"
+reference_path = "res://scenes/Map.tscn"
 
 [node name="RestartButton" parent="WinnerInterface/WinnerOverlay/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 33.0

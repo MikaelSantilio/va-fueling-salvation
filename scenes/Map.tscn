@@ -1,0 +1,150 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/themes/selected-button-default.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/themes/non-selected-map.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/themes/selected-button-map.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/fonts/Inconsolata-VariableFont_wdth,wght.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://scenes/Map.gd" type="Script" id=5]
+[ext_resource path="res://assets/themes/non-selected-default.tres" type="StyleBox" id=6]
+[ext_resource path="res://assets/fonts/Mighty Brush Demo.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/textures/background_images/WhatsApp Image 2021-06-21 at 12.40.57.jpeg" type="Texture" id=8]
+[ext_resource path="res://assets/textures/background_images/images (2).jpeg" type="Texture" id=9]
+[ext_resource path="res://assets/textures/background_images/41530.jpg" type="Texture" id=10]
+[ext_resource path="res://assets/sounds/musics/intro.mp3" type="AudioStream" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 42
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 80
+outline_size = 1
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+outline_size = 2
+outline_color = Color( 0.113725, 0.121569, 0.113725, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 65
+outline_size = 1
+outline_color = Color( 0.054902, 0.521569, 0.0941176, 1 )
+font_data = ExtResource( 7 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 511.84, 301.039 )
+scale = Vector2( 1.53182, 1.35389 )
+texture = ExtResource( 9 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 48.0
+margin_top = 40.0
+margin_right = 190.0
+margin_bottom = 117.0
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = SubResource( 1 )
+text = "Back"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Button"]
+margin_left = 10.9022
+margin_top = -4.72508
+margin_right = 100.902
+margin_bottom = 91.2749
+custom_fonts/font = SubResource( 2 )
+text = "← "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 220.457
+margin_top = 267.266
+margin_right = 483.457
+margin_bottom = 444.266
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = ExtResource( 1 )
+custom_styles/normal = ExtResource( 6 )
+icon = ExtResource( 10 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Button2"]
+margin_left = 28.409
+margin_top = 173.318
+margin_right = 239.409
+margin_bottom = 253.318
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.454902, 0.941176, 0.0588235, 1 )
+text = "Forest"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="."]
+margin_left = 600.449
+margin_top = 265.318
+margin_right = 866.449
+margin_bottom = 441.318
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = ExtResource( 1 )
+custom_styles/normal = ExtResource( 6 )
+icon = ExtResource( 8 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Button3"]
+margin_left = 28.409
+margin_top = 173.318
+margin_right = 239.409
+margin_bottom = 253.318
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.917647, 0.0235294, 1 )
+text = "Desert"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 324.341
+margin_top = 20.4659
+margin_right = 755.341
+margin_bottom = 92.4659
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.94902, 0.878431, 0.0705882, 1 )
+text = "Select the Fase"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]

@@ -171,11 +171,16 @@ _global_script_class_icons={
 [application]
 
 config/name="Vehicle Adventures: Fueling Salvation"
+run/main_scene="res://scenes/Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Global="*res://scripts/globals/Global.gd"
+
+[display]
+
+window/size/resizable=false
 
 [editor_plugins]
 

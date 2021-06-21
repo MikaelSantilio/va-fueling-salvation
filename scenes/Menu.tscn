@@ -1,0 +1,124 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/themes/selected-button-default.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/themes/non-selected-default.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/textures/background_images/images (3).jpeg" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/JUSTICE LEAGUE.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/fonts/Call of Ops Duty.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/fonts/Mighty Brush Demo.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://scenes/Menu.gd" type="Script" id=7]
+[ext_resource path="res://assets/sounds/musics/intro.mp3" type="AudioStream" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 52
+outline_size = 3
+outline_color = Color( 0.584314, 0.592157, 0.231373, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+outline_size = 2
+outline_color = Color( 0.360784, 0.47451, 0.305882, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 5 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -1.38989, 0.764175 )
+scale = Vector2( 1.39376, 1.45868 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Label" type="Label" parent="ParallaxBackground"]
+margin_left = 316.799
+margin_top = 19.0792
+margin_right = 760.799
+margin_bottom = 93.0792
+custom_fonts/font = SubResource( 1 )
+text = "Vehicle Adventures"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="ParallaxBackground"]
+margin_left = 345.802
+margin_top = 97.9529
+margin_right = 730.802
+margin_bottom = 217.953
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.898039, 0.866667, 0.168627, 1 )
+text = "Fueling Salvation"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartGameButton" type="Button" parent="."]
+margin_left = 718.527
+margin_top = 261.981
+margin_right = 925.527
+margin_bottom = 336.981
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = ExtResource( 1 )
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = SubResource( 3 )
+keep_pressed_outside = true
+text = "Start Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AboutButton" type="Button" parent="."]
+margin_left = 716.639
+margin_top = 362.032
+margin_right = 923.639
+margin_bottom = 437.032
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = ExtResource( 1 )
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = SubResource( 4 )
+text = "About"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" type="Button" parent="."]
+margin_left = 716.639
+margin_top = 460.195
+margin_right = 923.639
+margin_bottom = 535.195
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = ExtResource( 1 )
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = SubResource( 5 )
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+
+[connection signal="pressed" from="StartGameButton" to="." method="_on_StartGameButton_pressed"]
+[connection signal="pressed" from="AboutButton" to="." method="_on_AboutButton_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_ExitButton_pressed"]

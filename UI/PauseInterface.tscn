@@ -47,7 +47,7 @@ margin_top = 0.0
 margin_right = 228.0
 margin_bottom = 29.0
 text = "Main Menu"
-reference_path = "res://scenes/menu/Menu.tscn"
+reference_path = "res://scenes/Menu.tscn"
 
 [node name="RestartButton" parent="PauseInterface/PauseOverlay/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 33.0

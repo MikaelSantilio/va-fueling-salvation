@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://addons/rmsmartshape/shapes/point_array.gd" type="Script" id=1]
 [ext_resource path="res://addons/rmsmartshape/vertex_properties.gd" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/textures/world/stars.png" type="Texture" id=19]
 [ext_resource path="res://entities/MapLimit.tscn" type="PackedScene" id=20]
 [ext_resource path="res://entities/FinishDetector.tscn" type="PackedScene" id=21]
+[ext_resource path="res://assets/sounds/musics/desert.mp3" type="AudioStream" id=22]
 
 [sub_resource type="Resource" id=34]
 script = ExtResource( 2 )
@@ -384,6 +385,11 @@ position = Vector2( -28067.3, -5040.23 )
 
 [node name="FinishDetector" parent="." instance=ExtResource( 21 )]
 position = Vector2( 52869, -5943.07 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+volume_db = -7.0
+autoplay = true
 
 [connection signal="shoot_car" from="car" to="." method="_on_car_shoot_car"]
 [connection signal="drone_shoot" from="Drone2" to="." method="_on_Drone2_drone_shoot"]
