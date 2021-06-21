@@ -290,8 +290,12 @@ polygon = PoolVector2Array( 2046.26, -3255.2, 2104.32, -3251.56, 2160.92, -3243.
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.870588, 0.423529, 0.996078, 1 )
 
+[node name="Drone2" parent="." instance=ExtResource( 13 )]
+position = Vector2( -17949.1, -4243.91 )
+
 [node name="Drone" parent="." instance=ExtResource( 13 )]
-position = Vector2( -25412.6, -4343.65 )
+position = Vector2( -23244.6, -4663.65 )
 
 [connection signal="shoot_car" from="car" to="." method="_on_car_shoot_car"]
+[connection signal="drone_shoot" from="Drone2" to="." method="_on_Drone2_drone_shoot"]
 [connection signal="drone_shoot" from="Drone" to="." method="_on_Drone_drone_shoot"]

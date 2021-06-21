@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/HUD.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/vehicles/speedometer/02_pointer.png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/vehicles/speedometer/02.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/icons/bullet.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/RussoOne.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/textures/icons/wrench.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/icons/gas.png" type="Texture" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.353516, 1, 0, 1 )
@@ -125,20 +128,22 @@ __meta__ = {
 }
 
 [node name="GasBar" type="ProgressBar" parent="HUD/InfoBars"]
+visible = false
 margin_left = -62.0443
 margin_top = 43.2274
 margin_right = 173.956
 margin_bottom = 63.2274
 custom_styles/fg = SubResource( 3 )
 custom_styles/bg = SubResource( 4 )
-max_value = 1000.0
-value = 500.0
+step = 0.001
+value = 100.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="HUD/InfoBars"]
+visible = false
 margin_left = 11.9838
 margin_top = 5.59873
 margin_right = 89.9838
@@ -150,9 +155,52 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="HUD/InfoBars"]
+visible = false
 margin_left = 11.9838
 margin_top = 41.5987
 margin_right = 89.9838
 margin_bottom = 66.5987
 custom_fonts/font = ExtResource( 5 )
 text = "GAS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BulletCount" type="Label" parent="HUD/InfoBars"]
+margin_left = -28.0
+margin_top = 54.0
+margin_right = 50.0
+margin_bottom = 79.0
+custom_fonts/font = ExtResource( 5 )
+text = "10000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wrech" type="TextureRect" parent="HUD/InfoBars"]
+margin_left = 40.9735
+margin_top = 6.31359
+margin_right = 111.974
+margin_bottom = 77.3136
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+
+[node name="Gas" type="TextureRect" parent="HUD/InfoBars"]
+visible = false
+margin_left = 43.3701
+margin_top = 42.6428
+margin_right = 114.37
+margin_bottom = 113.643
+rect_scale = Vector2( 0.28, 0.28 )
+texture = ExtResource( 7 )
+
+[node name="Bullet" type="TextureRect" parent="HUD/InfoBars"]
+margin_left = -59.5265
+margin_top = 44.3136
+margin_right = 11.4735
+margin_bottom = 177.314
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

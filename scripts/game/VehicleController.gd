@@ -21,8 +21,9 @@ signal shoot_car(bullet, shoot_transform)
 #signal shoot(bullet, direction, location)
 
 func _ready():
+	Global.global_hp = hp
+	Global.player_gas = 1000
 	rng.randomize()
-
 
 func _physics_process(delta):
 
@@ -101,4 +102,4 @@ func _on_Weapon_shoot(bullet, shoot_transform):
 
 
 func _on_EnemyBulletDetector_area_entered(area):
-	print('TOMOU DANO')
+	Global.global_hp -= 1

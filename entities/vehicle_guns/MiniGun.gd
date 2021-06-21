@@ -8,7 +8,7 @@ var echo_click = false
 signal shoot(bullet, shoot_transform)
 
 func _ready():
-	Global.player_bullets = 10000
+	Global.player_bullets = 1500
 	rng.randomize()
 
 func _physics_process(delta):
@@ -20,14 +20,21 @@ func _physics_process(delta):
 		rotation += aim_speed
 	else:
 		rotation -= aim_speed
+	
+	if Global.player_bullets <= 0 and not Global.empty_bullets:
+		$MiddleShotAudio.stop()
+		$EndShotAudio.play()
+		$weapon/fire.visible = false
+		_start_shot_finished = false
+		Global.empty_bullets = true
 
-	if Input.is_action_just_released("ui_primary_shot"):
+	elif Input.is_action_just_released("ui_primary_shot") and not Global.empty_bullets:
 		$MiddleShotAudio.stop()
 		$EndShotAudio.play()
 		$weapon/fire.visible = false
 		_start_shot_finished = false
 	
-	elif echo_click and Input.is_action_pressed("ui_primary_shot") and _start_shot_finished:
+	elif echo_click and Input.is_action_pressed("ui_primary_shot") and _start_shot_finished and Global.player_bullets > 0:
 		$StartShotAudio.stop()
 		$weapon/fire.visible = true 
 		#emit_signal("shoot", Bullet, get_global_rotation(), get_global_position())

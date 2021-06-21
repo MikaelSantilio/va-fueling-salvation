@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/textures/vehicles/hummer/wheel.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/vehicles/hummer/body.png" type="Texture" id=2]
@@ -29,6 +29,8 @@ extents = Vector2( 164.541, 69.4707 )
 [sub_resource type="StreamTexture" id=6]
 flags = 4
 load_path = "res://.import/headlight_2.png-1ae88adbfa54aafdfdd39c931efac8bd.stex"
+
+[sub_resource type="RectangleShape2D" id=7]
 
 [node name="car" type="RigidBody2D"]
 position = Vector2( 202, -90 )
@@ -149,6 +151,13 @@ color = Color( 1, 0.027451, 0.027451, 1 )
 position = Vector2( 130.662, 21.5019 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 8 )
+
+[node name="DroneDetector" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DroneDetector"]
+modulate = Color( 0, 1, 0.882353, 1 )
+shape = SubResource( 7 )
 
 [connection signal="body_entered" from="RolloverDetector" to="." method="_on_RolloverDetector_body_entered"]
 [connection signal="timeout" from="RolloverTimer" to="." method="_on_RolloverTimer_timeout"]

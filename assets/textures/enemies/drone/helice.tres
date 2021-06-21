@@ -7,7 +7,6 @@
 [ext_resource path="res://assets/textures/enemies/drone/helices/1.png" type="Texture" id=5]
 
 [resource]
-flags = 4
 frames = 6
 fps = 80.0
 frame_0/texture = ExtResource( 5 )

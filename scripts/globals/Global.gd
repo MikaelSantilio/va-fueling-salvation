@@ -8,28 +8,8 @@ var other_screen_open : = false
 var level_id : int
 var current_level : String
 var global_coins : int = 0
-var global_hp : int = 0
+var global_hp : float = 0
 var player_speed_kmh : int = 0
-var player_bullets : int = 0
-var players : Dictionary = {
-		"police_car": {
-			name = "Carro de polícia",
-			path = "res://assets/objects/vehicles/police_car.tscn"
-		},
-		"sport": {
-			name = "Carro Esporte",
-			path = "res://assets/objects/vehicles/sport.tscn"
-		},
-		"monster": {
-			name = "Carro Monstro",
-			path = "res://assets/objects/vehicles/monster.tscn"
-		},
-		"jeep": {
-			name = "Jipe",
-			path = "res://assets/objects/vehicles/jeep.tscn"
-		}
-	}
-var vehicle_selected : Dictionary = players["monster"]
-var coin_sound
-func play_coin_sound():
-	coin_sound.play()
+var player_bullets : int = 100
+var empty_bullets : bool = false
+var player_gas : float = 100
