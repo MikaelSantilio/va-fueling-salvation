@@ -17,15 +17,14 @@ func _ready():
 func _physics_process(delta):
 	speed = Global.player_speed_kmh / 0.014 / 3.6
 	speed = abs(speed)
-	
-	vector_2 = global_position
-	if vector_2.distance_to(drone_pos.global_position) > 3:
-		set_global_position(vector_2.move_toward(drone_pos.global_position, speed * delta))
 
 	$Weapon/HeavyShot2D.pitch_scale = rng.randf_range(0.85, 1)
 
 	#shoot_on_player()
 	if chase_player:
+		vector_2 = global_position
+		#if vector_2.distance_to(drone_pos.global_position) > 3:
+		set_global_position(vector_2.move_toward(drone_pos.global_position, speed * delta))
 		$Weapon.look_at(drone_aim_pos.get_global_position())
 	
 	if can_shoot:

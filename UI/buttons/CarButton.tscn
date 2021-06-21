@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/themes/selected-button-profile.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/sprites/vehicles/monster/wheel.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/vehicles/monster/body.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="CarButton" type="Button"]
+margin_left = 707.083
+margin_top = 294.701
+margin_right = 799.083
+margin_bottom = 377.701
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = ExtResource( 1 )
+custom_styles/normal = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 45.709, 35.3632 )
+scale = Vector2( 0.214311, 0.368343 )
+texture = ExtResource( 3 )
+
+[node name="wheel" type="Sprite" parent="Sprite"]
+position = Vector2( -118.617, 71.0322 )
+scale = Vector2( 1.29843, 0.814984 )
+texture = ExtResource( 2 )
+
+[node name="wheel2" type="Sprite" parent="Sprite"]
+position = Vector2( 134.904, 71.0322 )
+scale = Vector2( 1.29843, 0.814984 )
+texture = ExtResource( 2 )

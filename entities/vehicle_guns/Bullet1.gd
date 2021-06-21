@@ -12,10 +12,9 @@ func _process(delta):
 	position += transform.x * speed * delta
 	current_position = get_global_position()
 	#print(current_position.y )
-	#if current_position.y < -850:
-	#	queue_free()
+	if current_position.y > 570 or current_position.y < -8000 or current_position.x < 3000 or current_position.x > 85000:
+		queue_free()
 
 
 func _on_BulletDamage_area_entered(area):
-	print('Acertou')
 	queue_free()

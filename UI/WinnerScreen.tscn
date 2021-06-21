@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/fonts/RussoOne-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://UI/buttons/RestartButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/buttons/DefaultButton.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+font_data = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="WinnerInterface" type="Control" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinnerOverlay" type="ColorRect" parent="WinnerInterface"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.156863 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinnerInterface/WinnerOverlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -114.0
+margin_top = -114.0
+margin_right = 114.0
+margin_bottom = 114.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" parent="WinnerInterface/WinnerOverlay/VBoxContainer" instance=ExtResource( 4 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 228.0
+margin_bottom = 29.0
+text = "Continue"
+reference_path = "res://scenes/map/Map.tscn"
+
+[node name="RestartButton" parent="WinnerInterface/WinnerOverlay/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 33.0
+margin_bottom = 62.0
+
+[node name="Label" type="Label" parent="WinnerInterface/WinnerOverlay"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -142.5
+margin_top = 57.0
+margin_right = 132.5
+margin_bottom = 131.0
+custom_fonts/font = SubResource( 1 )
+text = "YOU WIN"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

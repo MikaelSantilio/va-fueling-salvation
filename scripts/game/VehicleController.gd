@@ -11,6 +11,7 @@ var _duration_pressed = 0
 var speed : float = 0.0
 var is_on_lava = false
 var is_rollover = false
+var player_die : bool = false
 onready var timer = $RolloverTimer
 export var reset_time : float = 2.5
 var rng = RandomNumberGenerator.new()
@@ -43,7 +44,7 @@ func _physics_process(delta):
 	#print((speed_car - lower) / (upper - speed_car))
 	
 	#$EngineAudio.pitch_scale = lower + (upper - lower) * speed_car
-	if Input.is_action_pressed("ui_right") and speed_car < max_speed_kmh:
+	if Input.is_action_pressed("ui_right") and speed_car < max_speed_kmh and not player_die:
 
 		speed += acceleration_px
 		speed = clamp(speed, speed, max_torque_impulse)
@@ -51,24 +52,31 @@ func _physics_process(delta):
 		$r_wheel.apply_torque_impulse(speed)
 
 
-	elif Input.is_action_pressed("ui_left") and speed_car < max_speed_kmh:
+	elif Input.is_action_pressed("ui_left") and speed_car < max_speed_kmh and not player_die:
 		speed -= acceleration_px
 		speed = clamp(speed, -max_torque_impulse, speed)
 		$l_wheel.apply_torque_impulse(speed)
 		$r_wheel.apply_torque_impulse(speed)
 	
-	elif Input.is_action_pressed("ui_up"):
+	elif Input.is_action_pressed("ui_up") and not player_die:
 		rotation_degrees -= 0.5
 	
-	elif Input.is_action_pressed("ui_down"):
+	elif Input.is_action_pressed("ui_down") and not player_die:
 		rotation_degrees += 0.5
 		
-	if Input.is_action_just_released("ui_horn"):
+	if Input.is_action_just_released("ui_horn") and not player_die:
 		$HornSound.stop()
 	
-	elif Input.is_action_pressed("ui_horn"):
+	elif Input.is_action_pressed("ui_horn") and not player_die:
+		
 		if not $HornSound.is_playing():
 			$HornSound.play()
+	
+	if Global.global_hp <= 0 and not player_die:
+		var DieScreen = load("res://UI/DScreen.tscn").instance()
+		instance_from_id(Global.level_id).add_child(DieScreen)
+		player_die = true
+		Global.other_screen_open = true
 
 func _on_LavaDetector_area_entered(area):
 	is_on_lava = true
